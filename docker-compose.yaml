@@ -1,0 +1,20 @@
+version: '3.5'
+services: 
+  postgres14:
+    container_name: postgres14
+    build: .docker/postgres
+    tty: true
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ./postgres14:/var/lib/postgresql/data
+    ports:
+      - 54322:5432
+    networks:
+      - postgres
+    restart: always
+networks:
+  postgres:
+    driver: bridge
+    
